@@ -54,26 +54,17 @@ declare let toastr
     `] 
 })
 export class PhotoUploadComponent{
-     album: IAlbum[]
     addMode: boolean
     photoUrl: string
-    photo: IPhoto
     public formGroup: FormGroup;
     constructor(private route: ActivatedRoute, private formBuilder: FormBuilder, private photoService: PhotosService, private router: Router ){}
     
     ngOnInit(){
-        this.route.paramMap.subscribe((routingParametars) => {
-            this.photoService.getPhoto(+routingParametars.get("id")).subscribe(
-                (_res) => {
-                    this.photo = _res;
-                    this.formGroup = this.formBuilder.group({
-                        albumId: [this.photo.albumId],
-                        title: [this.photo.title, Validators.required],
-                        url: [this.photo.url, Validators.required],
-                        thumbnailUrl: [this.photo.thumbnailUrl, Validators.required],
-                    });
-                }
-            )
+        this.formGroup = this.formBuilder.group({
+            albumId: [''],
+            title: ['', Validators.required],
+            url: ['', Validators.required],
+            thumbnailUrl: ['', Validators.required],
         });
     }
     clickSave(photoTitle){
