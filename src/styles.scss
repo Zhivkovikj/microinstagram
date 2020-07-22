@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+
+$theme-colors: (
+    "primary": #0000FF,
+    "secondary":	#D3D3D3
+);
+
+@import "~bootstrap/scss/bootstrap";
+
+.container{
+    padding-top: 10px;
+    background-color: map-get($theme-colors, "secondary");
+    font-family: Arial;
+    color:white;
+}
+.toast-success {
+   background-color: #00FF00;
+}
+.toast-success .toast-message {
+    color: black;
+    
+}
